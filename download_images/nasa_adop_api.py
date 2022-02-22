@@ -1,6 +1,4 @@
 import os
-from pprint import pprint
-
 import requests
 from dotenv import load_dotenv
 from datetime import date, timedelta
@@ -13,8 +11,9 @@ NASA_TOKEN = os.environ['NASA_TOKEN']
 
 payload = {
     'api_key': os.environ['NASA_TOKEN'],
-    'start_date': f'{date(2022, 1, 10)}',  # Дата для > 30 снимков 2022-1-10
-    'end_date': f'{date.today() - timedelta(days=1)}'  # -1 день т.к. есть разница во времени локальном и сервера.
+    'start_date': f'{date(2022, 2, 10)}',  # Дата для > 30 снимков 2022-1-10
+    # -1 день т.к. есть разница во времени локальном и сервера.
+    'end_date': f'{date.today() - timedelta(days=1)}'
 }
 
 response = requests.get('https://api.nasa.gov/planetary/apod',
