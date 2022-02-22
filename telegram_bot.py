@@ -13,7 +13,7 @@ CHAT_ID_GROUP = os.environ["CHAT_ID_GROUP"]
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 path_current = 'download_images/images'
 path_destination = 'download_images/images_shown'
-path_error = 'download_images/error_image'
+path_error = 'download_images/error_images'
 
 if not os.path.exists(path_destination):  # Проверяем есть ли такая папка.
     os.makedirs(path_destination)  # Если нет, то создаём.
