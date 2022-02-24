@@ -6,6 +6,11 @@ def main():
     response = requests.get(
         'https://epic.gsfc.nasa.gov/api/natural/date/2015-10-31'
         )
+    # Error handler
+    decoded_response = response.json()
+    if 'error' in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response['error'])
+
     path = 'images'
     names_prefix_image = 'image'
     url_images = []

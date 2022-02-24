@@ -18,6 +18,10 @@ def main():
 
     response = requests.get('https://api.nasa.gov/planetary/apod',
                             params=payload)
+    # Error handler
+    decoded_response = response.json()
+    if 'error' in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response['error'])
 
     path = 'images'
     names_prefix_image = 'image'

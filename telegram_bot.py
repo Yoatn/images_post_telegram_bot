@@ -17,12 +17,13 @@ def main():
     path_destination = 'download_images/images_shown'
     path_error = 'download_images/error_images'
 
-    if not os.path.exists(path_destination):  # Проверяем есть ли такая папка.
-        os.makedirs(path_destination)  # Если нет, то создаём.
+    # Проверяем есть ли такая папка. Если нет, то создаём.
+    os.makedirs(path_destination, exist_ok=True)
 
-    while os.listdir(path=path_current):
+    files_in_images = os.listdir(path=path_current)
+    random.shuffle(files_in_images)
+    for show_file in files_in_images:
         try:
-            show_file = random.choice(os.listdir(path=path_current))
             with open(f'{path_current}/{show_file}', 'rb') as file:
                 bot.send_photo(
                     chat_id=CHAT_ID_GROUP,
