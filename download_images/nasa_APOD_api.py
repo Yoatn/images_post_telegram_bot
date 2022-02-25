@@ -1,4 +1,4 @@
-import os
+from os import environ
 import requests
 from dotenv import load_dotenv
 from datetime import date, timedelta
@@ -10,7 +10,7 @@ def main():
     load_dotenv()
 
     payload = {
-        'api_key': os.environ['NASA_TOKEN'],
+        'api_key': environ['NASA_TOKEN'],
         'start_date': f'{date(2022, 2, 10)}',  # Дата для > 30 снимков 2022-1-10
         # -1 день т.к. есть разница во времени локальном и сервера.
         'end_date': f'{date.today() - timedelta(days=1)}'
