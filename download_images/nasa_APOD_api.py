@@ -3,7 +3,6 @@ import requests
 from dotenv import load_dotenv
 from datetime import date, timedelta
 import fetch_images_from_url
-import nasa_epic_api
 
 
 def main():
