@@ -19,23 +19,23 @@ def main():
 
     os.makedirs(path_destination, exist_ok=True)
 
-    files_in_images = os.listdir(path=path_current)
-    random.shuffle(files_in_images)
-    for show_file in files_in_images:
+    files_in_the_folder_images = os.listdir(path=path_current)
+    random.shuffle(files_in_the_folder_images)
+    for filename in files_in_the_folder_images:
         try:
-            with open(f'{path_current}/{show_file}', 'rb') as file:
+            with open(f'{path_current}/{filename}', 'rb') as file:
                 bot.send_photo(
                     chat_id=chat_id_group,
                     photo=file.read()
                 )
             os.replace(
-                f'{path_current}/{show_file}',
-                f'{path_destination}/{show_file}'
+                f'{path_current}/{filename}',
+                f'{path_destination}/{filename}'
             )
         except telegram.error.BadRequest:  # Если файл больше 15Мб
             os.replace(
-                f'{path_current}/{show_file}',
-                f'{path_error}/{show_file}'
+                f'{path_current}/{filename}',
+                f'{path_error}/{filename}'
             )
         sleep(publication_delay)
 
