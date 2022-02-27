@@ -8,16 +8,15 @@ from dotenv import load_dotenv
 def main():
     load_dotenv()
 
-    PUBLICATION_DELAY = int(os.environ['PUBLICATION_DELAY'])
-    TELEGRAM_BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
-    CHAT_ID_GROUP = os.environ["CHAT_ID_GROUP"]
+    publication_delay = int(os.environ['PUBLICATION_DELAY'])
+    telegram_bot_token = os.environ['TELEGRAM_BOT_TOKEN']
+    chat_id_group = os.environ["CHAT_ID_GROUP"]
 
-    bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
+    bot = telegram.Bot(token=telegram_bot_token)
     path_current = 'download_images/images'
     path_destination = 'download_images/images_shown'
     path_error = 'download_images/error_images'
 
-    # Проверяем есть ли такая папка. Если нет, то создаём.
     os.makedirs(path_destination, exist_ok=True)
 
     files_in_images = os.listdir(path=path_current)
@@ -26,7 +25,7 @@ def main():
         try:
             with open(f'{path_current}/{show_file}', 'rb') as file:
                 bot.send_photo(
-                    chat_id=CHAT_ID_GROUP,
+                    chat_id=chat_id_group,
                     photo=file.read()
                 )
             os.replace(
@@ -38,7 +37,7 @@ def main():
                 f'{path_current}/{show_file}',
                 f'{path_error}/{show_file}'
             )
-        sleep(PUBLICATION_DELAY)
+        sleep(publication_delay)
 
 
 if __name__ == '__main__':
