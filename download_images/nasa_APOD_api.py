@@ -5,7 +5,7 @@ from datetime import date, timedelta
 import fetch_images_from_url
 
 
-def main():
+def get_urls_nasa_apod_api():
     load_dotenv()
 
     payload = {
@@ -22,15 +22,16 @@ def main():
     if 'error' in decoded_response:
         raise requests.exceptions.HTTPError(decoded_response['error'])
 
-    path = 'images'
-    names_prefix_image = 'image'
     url_images = []
-    for i in response.json():
+    for i in decoded_response:
         if i['media_type'] == 'image':
             url_images.append(i['url'])
 
-    fetch_images_from_url.fetch_images(url_images, path, names_prefix_image)
+    return url_images
 
 
 if __name__ == '__main__':
-    main()
+    path = 'images'
+    names_prefix_image = 'image'
+    urls_images = get_urls_nasa_apod_api()
+    fetch_images_from_url.fetch_images(urls_images, path, names_prefix_image)

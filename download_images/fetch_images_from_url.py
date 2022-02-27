@@ -9,7 +9,6 @@ import requests
 
 
 def fetch_images(url_roster, path='images', prefix='image'):
-    # Проверяем есть ли такая папка. Если нет, то создаём.
     os.makedirs(path, exist_ok=True)
     # Проверяем сколько файлов в папке и +1. Это будет индекс следующего файла
     files_name_index = len(os.listdir(path=path)) + 1
@@ -18,10 +17,10 @@ def fetch_images(url_roster, path='images', prefix='image'):
         response = requests.get(url)
 
         # Error handler
-        decoded_response = response.json()
-        if 'error' in decoded_response:
-            raise requests.exceptions.HTTPError(decoded_response['error'])
+        decoded_response = response.content
+        if not response.ok:
+            raise requests.exceptions
 
         with open(f'{path}/{filename}', 'wb') as file:
-            file.write(response.content)
+            file.write(decoded_response)
         files_name_index += 1
