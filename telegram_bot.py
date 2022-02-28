@@ -19,9 +19,9 @@ def main():
 
     os.makedirs(path_destination, exist_ok=True)
 
-    files_in_the_folder_images = os.listdir(path=path_current)
-    random.shuffle(files_in_the_folder_images)
-    for filename in files_in_the_folder_images:
+    image_names = os.listdir(path=path_current)
+    random.shuffle(image_names)
+    for filename in image_names:
         try:
             with open(f'{path_current}/{filename}', 'rb') as file:
                 bot.send_photo(
