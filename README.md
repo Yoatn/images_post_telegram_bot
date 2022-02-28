@@ -1,6 +1,20 @@
 # images post telegram bot
 Бот постит в канал изображения предварительно сохранённые с определённой периодичностью.
 ___
+### Настройка переменых окружения .env
+**NASA_TOKEN**=*avVsX2sYBEdbOJ2hw9EZxlXAiTY77JFZS67fgsbV*</br>
+[Сайт NASA APIs](https://api.nasa.gov/)
+
+**TELEGRAM_BOT_TOKEN**=*5205777133:AAFTGuqxBgRm5UJ6mCt1OZgtYsqGXZwDnWg*</br>
+[Получение API Bot Telegram](https://core.telegram.org/bots#6-botfather)
+
+**CHAT_ID_BOT**=*376465992*
+**CHAT_ID_GROUP**=*-1001650618717*</br>
+[Как узнать ID чата бота и чата группы.](https://lumpics.ru/how-find-out-chat-id-in-telegram/)
+
+**PUBLICATION_DELAY**=*86400*</br>
+Задержка публикации постов в секундах.
+___
 
 ### telegram_bot
 Постит канал (CHAT_ID_GROUP) изображения из папки images.<br/>
@@ -33,6 +47,11 @@ ___
 Например *image_27.jpg*<br/>
 Скачивает изображение и сохраняет его в указанную папку.
 ___
+### Пример запуска
+```
+python telegram_bot.py
+```
+---
 Код написан в образовательных целях на онлайн курсе по Python [dvmn.org](https://dvmn.org)
 
 
