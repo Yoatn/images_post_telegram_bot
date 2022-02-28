@@ -11,11 +11,10 @@ def get_urls_space_x_api():
     if 'error' in decoded_response:
         raise requests.exceptions.HTTPError(decoded_response['error'])
 
-    for i in decoded_response:
-        url_images = i['links']['flickr']['original']
+    for launch_info in decoded_response:
+        url_images = launch_info['links']['flickr']['original']
         if url_images:
             return url_images
-            break  # Чтобы получить только ссылки с последнего запуска.
 
 
 if __name__ == '__main__':
