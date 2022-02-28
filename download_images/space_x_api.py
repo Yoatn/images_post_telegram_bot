@@ -12,9 +12,9 @@ def get_urls_space_x_api():
         raise requests.exceptions.HTTPError(decoded_response['error'])
 
     for launch_info in decoded_response:
-        url_images = launch_info['links']['flickr']['original']
-        if url_images:
-            return url_images
+        image_urls = launch_info['links']['flickr']['original']
+        if image_urls:
+            return image_urls
 
 
 if __name__ == '__main__':
