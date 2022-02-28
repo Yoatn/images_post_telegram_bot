@@ -2,14 +2,14 @@
 Бот постит в канал изображения предварительно сохранённые с определённой периодичностью.
 ___
 ### Настройка переменых окружения .env
-**NASA_TOKEN**=*avVsX2sYBEdbOJ2hw9EZxlXAiTY77JFZS67fgsbV*</br>
+**NASA_TOKEN**=*avVsX2sYBEdbOJ2hw9EZxlXAiTY88JFZS67fgsbV*</br>
 [Сайт NASA APIs](https://api.nasa.gov/)
 
-**TELEGRAM_BOT_TOKEN**=*5205777133:AAFTGuqxBgRm5UJ6mCt1OZgtYsqGXZwDnWg*</br>
+**TELEGRAM_BOT_TOKEN**=*5205777133:AAFTGuqxBgRm5UJ6mCt15ZgtYsqGXZwDnWg*</br>
 [Получение API Bot Telegram](https://core.telegram.org/bots#6-botfather)
 
-**CHAT_ID_BOT**=*376465992*
-**CHAT_ID_GROUP**=*-1001650618717*</br>
+**CHAT_ID_BOT**=*376655992*</br>
+**CHAT_ID_GROUP**=*-1002250619817*</br>
 [Как узнать ID чата бота и чата группы.](https://lumpics.ru/how-find-out-chat-id-in-telegram/)
 
 **PUBLICATION_DELAY**=*86400*</br>
