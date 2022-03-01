@@ -8,8 +8,8 @@ ___
 **TELEGRAM_BOT_TOKEN**=*5205777133:AAFTGuqxBgRm5UJ6mCt15ZgtYsqGXZwDnWg*</br>
 [Получение API Bot Telegram](https://core.telegram.org/bots#6-botfather)
 
-**CHAT_ID_BOT**=*376655992*</br>
-**CHAT_ID_GROUP**=*-1002250619817*</br>
+**BOT_CHAT_ID**=*376655992*</br>
+**GROUP_CHAT_ID**=*-1002250619817*</br>
 [Как узнать ID чата бота и чата группы.](https://lumpics.ru/how-find-out-chat-id-in-telegram/)
 
 **PUBLICATION_DELAY**=*86400*</br>

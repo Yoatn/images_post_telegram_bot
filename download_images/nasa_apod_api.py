@@ -19,16 +19,16 @@ def get_urls_nasa_apod_api():
 
     response.raise_for_status()
 
-    url_images = []
+    url_roster = []
     for image_info in response.json():
         if i['media_type'] == 'image':
-            url_images.append(image_info['url'])
+            url_roster.append(image_info['url'])
 
-    return url_images
+    return url_roster
 
 
 if __name__ == '__main__':
-    path = 'images_1'
-    names_prefix_image = 'image'
-    urls_images = get_urls_nasa_apod_api()
-    fetch_images_from_url.fetch_images(urls_images, path, names_prefix_image)
+    path = 'images'
+    image_name_prefix = 'image'
+    url_roster = get_urls_nasa_apod_api()
+    fetch_images_from_url.fetch_images(url_roster, path, image_name_prefix)

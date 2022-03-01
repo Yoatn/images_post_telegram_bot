@@ -9,13 +9,13 @@ def get_urls_space_x_api():
     response.raise_for_status()
 
     for launch_info in response.json():
-        image_urls = launch_info['links']['flickr']['original']
-        if image_urls:
-            return image_urls
+        url_roster = launch_info['links']['flickr']['original']
+        if url_roster:
+            return url_roster
 
 
 if __name__ == '__main__':
     path = 'images'
-    names_prefix_image = 'image'
-    urls_images = get_urls_space_x_api()
-    fetch_images_from_url.fetch_images(urls_images, path, names_prefix_image)
+    image_name_prefix = 'image'
+    url_roster = get_urls_space_x_api()
+    fetch_images_from_url.fetch_images(url_roster, path, image_name_prefix)

@@ -10,32 +10,32 @@ def main():
 
     publication_delay = int(os.environ['PUBLICATION_DELAY'])
     telegram_bot_token = os.environ['TELEGRAM_BOT_TOKEN']
-    chat_id_group = os.environ["CHAT_ID_GROUP"]
+    group_chat_id = os.environ["GROUP_CHAT_ID"]
 
     bot = telegram.Bot(token=telegram_bot_token)
-    path_current = 'download_images/images'
-    path_destination = 'download_images/images_shown'
-    path_error = 'download_images/error_images'
+    current_path = 'download_images/images'
+    destination_path = 'download_images/images_shown'
+    error_path = 'download_images/error_images'
 
-    os.makedirs(path_destination, exist_ok=True)
+    os.makedirs(destination_path, exist_ok=True)
 
-    image_names = os.listdir(path=path_current)
+    image_names = os.listdir(path=current_path)
     random.shuffle(image_names)
     for filename in image_names:
         try:
-            with open(f'{path_current}/{filename}', 'rb') as file:
+            with open(f'{current_path}/{filename}', 'rb') as file:
                 bot.send_photo(
-                    chat_id=chat_id_group,
+                    chat_id=group_chat_id,
                     photo=file.read()
                 )
             os.replace(
-                f'{path_current}/{filename}',
-                f'{path_destination}/{filename}'
+                f'{current_path}/{filename}',
+                f'{destination_path}/{filename}'
             )
         except telegram.error.BadRequest:  # Если файл больше 15Мб
             os.replace(
-                f'{path_current}/{filename}',
-                f'{path_error}/{filename}'
+                f'{current_path}/{filename}',
+                f'{error_path}/{filename}'
             )
         sleep(publication_delay)
 
