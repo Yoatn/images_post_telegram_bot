@@ -6,12 +6,9 @@ def get_urls_space_x_api():
     url_api_space_x = 'https://api.spacexdata.com/v4/launches/'
     response = requests.get(url_api_space_x)
 
-    # Error handler
-    decoded_response = response.json()
-    if 'error' in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response['error'])
+    response.raise_for_status()
 
-    for launch_info in decoded_response:
+    for launch_info in response.json():
         image_urls = launch_info['links']['flickr']['original']
         if image_urls:
             return image_urls

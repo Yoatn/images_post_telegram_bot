@@ -16,10 +16,8 @@ def fetch_images(url_roster, path='images', prefix='image'):
         filename = f'{prefix}_{files_name_index}{os.path.splitext(url)[1]}'
         response = requests.get(url)
 
-        # Error handler
+        response.raise_for_status()
         decoded_response = response.content
-        if not response.ok:
-            raise requests.exceptions
 
         with open(f'{path}/{filename}', 'wb') as file:
             file.write(decoded_response)

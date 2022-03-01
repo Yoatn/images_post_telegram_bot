@@ -5,21 +5,17 @@ import fetch_images_from_url
 def get_urls_nasa_epic_api():
     response = requests.get(
         'https://epic.gsfc.nasa.gov/api/natural/date/2015-10-31'
-        )
-    # Error handler
-    decoded_response = response.json()
-    if 'error' in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response['error'])
+    )
 
+    response.raise_for_status()
 
     urls_images = []
-    for i in decoded_response:
+    for i in response.json():
         urls_images.append(
             # Здесь указываем .jpg т.к. целенаправленно берём файлы из папки /jpg
             f'https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/jpg/{i["image"]}.jpg'
         )
     return urls_images
-
 
 
 if __name__ == '__main__':
