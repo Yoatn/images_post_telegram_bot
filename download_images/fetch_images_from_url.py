@@ -17,8 +17,7 @@ def fetch_images(url_roster, path='images', prefix='image'):
         response = requests.get(url)
 
         response.raise_for_status()
-        decoded_response = response.content
 
         with open(f'{path}/{filename}', 'wb') as file:
-            file.write(decoded_response)
+            file.write(response.content)
         files_name_index += 1
