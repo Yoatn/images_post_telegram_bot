@@ -10,10 +10,10 @@ def get_urls_nasa_epic_api():
     response.raise_for_status()
 
     urls_images = []
-    for i in response.json():
+    for image_info in response.json():
         urls_images.append(
             # Здесь указываем .jpg т.к. целенаправленно берём файлы из папки /jpg
-            f'https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/jpg/{i["image"]}.jpg'
+            f'https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/jpg/{image_info["image"]}.jpg'
         )
     return urls_images
 

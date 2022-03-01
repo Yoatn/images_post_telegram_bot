@@ -20,9 +20,9 @@ def get_urls_nasa_apod_api():
     response.raise_for_status()
 
     url_images = []
-    for i in response.json():
+    for image_info in response.json():
         if i['media_type'] == 'image':
-            url_images.append(i['url'])
+            url_images.append(image_info['url'])
 
     return url_images
 
